@@ -5,9 +5,9 @@ const server = Router();
 
 server.get('/livros', async (req, res) => {
     try {
-        const livros = book.ListarLivros;
-        if(!livros)
-            throw new Error('Falha ao procurar livros!');
+        const { id } = req.params
+
+        const livros = await book.ListBooks();
 
         res.send(livros);
     } catch (err) {

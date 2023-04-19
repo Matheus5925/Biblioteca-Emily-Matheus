@@ -1,7 +1,7 @@
 import {con} from './connection.js';
 
 class Books{
-    async ListarLivros(){
+    async ListBooks(){
         const comando = `
             SELECT * FROM TB_LIVRO
         `
