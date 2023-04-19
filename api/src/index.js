@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import controllerADM from './controller/controllerADM.js';
+import jwt from 'jsonwebtoken/'
 const server = express();
 
 server.use(cors());
