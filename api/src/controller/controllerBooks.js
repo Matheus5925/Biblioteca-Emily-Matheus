@@ -5,11 +5,11 @@ const server = Router();
 
 server.get('/getallbooks', async (req, res) => {
     try {
-        const livros = await book.ListBooks();
-        if(!livros)
-            throw new Error('Falha ao procurar livros!');
+        const books = await book.ListBooks();
+        if(!books)
+            throw new Error('Failed to search books!');
 
-        res.send(livros);
+        res.send(books);
     } catch (err) {
         res.status(400).send({
             error: err.message
@@ -17,16 +17,16 @@ server.get('/getallbooks', async (req, res) => {
     }
 });
 
-server.get('/livros/:id', async (req, res) => {
+server.get('/books/:id', async (req, res) => {
     try {
         const { id } = req.params;
 
-        const idLivro = await book.SearchBooksToId(id);
+        const idBook = await book.SearchBooksToId(id);
 
-        if(!idLivro)
-            throw new Error('id nao existe');
+        if(!idBook)
+            throw new Error('id not exist!');
 
-        res.send(idLivro);
+        res.send(idBook);
 
     } catch (err) {
         res.status(400).send({
