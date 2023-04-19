@@ -23,6 +23,27 @@ server.post('/login', async (req, resp) =>{
             error: err.message
         })
     }
+});
+
+server.post('/senduser', async (req, res) => {
+    try {
+        const infoUser = req.body;
+        if(!infoUser.name)
+            throw new Error('Name not infromed!')
+        if(!infoUser.email)
+            throw new Error('Email not informed!');
+        if(!infoUser.password)
+            throw new Error('Passwod not informed!');
+        
+        const response = await adm.AddUserDataBase(infoUser);
+
+        res.send(response).status(201);
+        
+    } catch (err) {
+        res.status(400).send({
+            error: err.message
+        })
+    }
 })
 
 export default server;

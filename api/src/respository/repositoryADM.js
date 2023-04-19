@@ -11,6 +11,16 @@ class Administrador{
         const [registro] = await (await con).query(comando, [email, password]);
         return registro[0];
     }
+
+    async AddUserDataBase(infoUser){
+        const comand = `
+            insert into TB_USUARIO(NM_USUARIO, DS_EMAIL, DS_SENHA)
+		    VALUE(?, ?, ?);
+        `
+        const [register] = await (await con).query(comand, [infoUser.name, infoUser.email, infoUser.password]);
+        infoUser.id = register.insertId;
+        return infoUser;
+    }
 }
 
 const adm = new Administrador();
