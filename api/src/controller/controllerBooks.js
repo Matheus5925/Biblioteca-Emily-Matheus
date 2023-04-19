@@ -5,9 +5,9 @@ const server = Router();
 
 server.get('/getallbooks', async (req, res) => {
     try {
-        const books = await book.ListBooks();
-        if(!books)
-            throw new Error('Failed to search books!');
+        const livros = await book.ListBooks();
+        if(!livros)
+            throw new Error('Falha ao procurar livros!');
 
         res.send(books);
     } catch (err) {
@@ -30,6 +30,27 @@ server.get('/books/:id', async (req, res) => {
 
     } catch (err) {
         res.status(400).send({
+            error: err.message
+        })
+    }
+})
+
+server.get('/books/name', async (req, resp) =>{
+    try {
+        const {name} = req.query
+
+        if(!name)
+            throw new Error('name of book not was informed');
+
+        const BookFilterToName = await book.SearchBooksToName(name);
+
+        if(!BookFilterToName)
+            throw new Error('Book is not exists')
+
+        resp.send(BookFilterToName)
+        
+    } catch (err) {
+        resp.status(400).send({
             error: err.message
         })
     }
