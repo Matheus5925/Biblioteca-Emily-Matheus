@@ -35,4 +35,25 @@ server.get('/livros/:id', async (req, res) => {
     }
 })
 
+server.get('/books/name', async (req, resp) =>{
+    try {
+        const {name} = req.query
+
+        if(!name)
+            throw new Error('name of book not was informed');
+
+        const BookFilterToName = await book.SearchBooksToName(name);
+
+        if(!BookFilterToName)
+            throw new Error('Book is not exists')
+
+        resp.send(BookFilterToName)
+        
+    } catch (err) {
+        resp.status(400).send({
+            error: err.message
+        })
+    }
+})
+
 export default server;
