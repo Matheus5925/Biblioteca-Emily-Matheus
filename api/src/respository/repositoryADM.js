@@ -1,4 +1,4 @@
-import {con} from './connection.js'
+import {con} from './connection.js';
 
 class Administrador{
     async LoginAdm(email, senha){
@@ -9,10 +9,10 @@ class Administrador{
             DS_SENHA = ?`
 
         const [registro] = await (await con).query(comando, [email, senha]);
-        return registro[0]
+        return registro[0];
     }
 }
 
-const adm = new Administrador()
+const adm = new Administrador();
 
-export default adm
+export default adm;
