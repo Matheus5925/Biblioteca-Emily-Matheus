@@ -21,6 +21,7 @@ class Administrador{
         infoUser.id = register.insertId;
         return infoUser;
     }
+
 }
 
 const adm = new Administrador();

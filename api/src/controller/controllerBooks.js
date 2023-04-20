@@ -54,6 +54,19 @@ server.get('/books/name', async (req, resp) =>{
             error: err.message
         })
     }
+});
+
+server.post("/addbook", async (req, res) => {
+    try {
+        const infoBook = req.body;
+
+        if(!infoBook)
+            throw new Error('')
+
+        const result = await book.AddBookDatabase(infoBook);
+    } catch (err) {
+        
+    }
 })
 
 export default server;
