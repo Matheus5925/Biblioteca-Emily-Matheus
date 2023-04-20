@@ -39,7 +39,6 @@ class Books{
     };
 
     async VerificationDataAddBooks(infoBook){
-        try {
         if(!infoBook.idUsuario)
             throw new Error('id user not informed!')
     
@@ -72,12 +71,6 @@ class Books{
 
         if(!infoBook.price)
             throw new Error('Price not informed!')
-
-            return infoBook
-        } catch (error) {
-            return error.message
-        }
-
     }
 };
 
