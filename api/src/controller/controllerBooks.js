@@ -1,5 +1,6 @@
 import { Router } from "express";
 import book from "../respository/RespositoryBooks.js";
+import CheckDataBooks from "../middlewares/VerificationBooks.js";
 
 const server = Router();
 
@@ -60,39 +61,7 @@ server.post("/addbook", async (req, resp) => {
     try {
         const infoBook = req.body
 
-        await book.VerificationDataAddBooks(infoBook)
-        // if(!infoBook.idUsuario)
-        //     throw new Error('id user not informed!')
-    
-        // if(!infoBook.nameBook)
-        //     throw new Error('Name not informed!')
-            
-        // if(!infoBook.insbn)
-        //     throw new Error('INSBN not informed!')
-
-        // if(!infoBook.editora)
-        //     throw new Error('Publish Company not informed!')
-
-        // if(!infoBook.edition)
-        //     throw new Error('Edition not informed! ')
-
-        // if(!infoBook.synopsis)
-        //     throw new Error('Synopsis not informed!')
-
-        // if(!infoBook.publication)
-        //     throw new Error('Publication not informed!')
-
-        // if(!infoBook.language)
-        //     throw new Error('Language not informed!')
-
-        // if(!infoBook.available)
-        //     throw new Error('Available not informed!')
-
-        // if(!infoBook.amountPage)
-        //     throw new Error('Amout Page not informed!')
-
-        // if(!infoBook.price)
-        //     throw new Error('Price not informed!')
+        await CheckDataBooks.VerificationDataAddBooks(infoBook)
 
 
         const result = await book.AddBookDatabase(infoBook);
