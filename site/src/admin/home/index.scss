@@ -1,0 +1,19 @@
+.principal-home-adm{
+    display: flex;
+    flex-direction: row;
+
+    .home-meio-conteudo{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .meio-home-imagem{
+        width: 100%;
+        height: 100%;
+        background-image: url('../../assets/image/meio-home.png');
+        background-position: center;
+        background-repeat: no-repeat;
+
+    }
+}
